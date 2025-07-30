@@ -1,0 +1,83 @@
+{
+    "name": "claude-commit-message",
+    "displayName": "Claude Commit Message Generator",
+    "description": "Generate commit messages using Claude AI based on your changes",
+    "version": "1.0.0",
+    "publisher": "Alireza Davoodi",
+    "engines": {
+        "vscode": "^1.82.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:*",
+        "onCommand:claude-commit-message.generate",
+        "onStartupFinished"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "claude-commit-message.generate",
+                "title": "Generate Commit Message with Claude",
+                "category": "Git"
+            }
+        ],
+        "configuration": {
+            "title": "Claude Commit Message",
+            "properties": {
+                "claudeCommitMessage.apiKey": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Your Claude API key",
+                    "scope": "application"
+                },
+                "menus": {
+                    "commandPalette": [
+                        {
+                            "command": "claude-commit-message.generate",
+                            "when": "gitOpenRepository" 
+                        }
+                    ],
+                    "scm/title": [
+                        {
+                            "command": "claude-commit-message.generate",
+                            "group": "navigation",
+                            "when": "scmProvider == git"
+                        }
+                    ]
+                },
+                "claudeCommitMessage.model": {
+                    "type": "string",
+                    "default": "claude-3-7-sonnet-latest",
+                    "description": "Which Claude model to use",
+                    "scope": "application",
+                    "enum": [
+                        "claude-3-7-sonnet-latest",
+                        "claude-3-5-sonnet-latest",
+                        "claude-3-5-haiku-latest"
+                    ]
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "clean": "rm -rf dist && rm -rf node_modules && npm install",
+        "watch": "tsc -watch -p ./",
+        "pretest": "npm run compile",
+        "test": "node ./out/test/runTest.js",
+        "postinstall": "npm run compile"
+    },
+    "devDependencies": {
+        "@types/node": "^18.11.18",
+        "@types/vscode": "^1.75.1",
+        "typescript": "^5.8.3"
+    },
+    "dependencies": {
+        "@anthropic-ai/sdk": "^0.16.0",
+        "diff": "^5.1.0"
+    }
+}
