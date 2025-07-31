@@ -49,6 +49,7 @@ export class ClaudeClient {
         const prompt = `You are an expert programmer analyzing git diff output. 
         Generate a concise, clear commit message following conventional commit standards.
         Focus on the why rather than the what, and group related changes logically.
+        Return only the commit message that will be sotred in git.
         
         Diff:
         ${diff}
@@ -57,7 +58,7 @@ export class ClaudeClient {
 
         const response = await this.anthropic.messages.create({
             model: "claude-3-5-sonnet-latest",
-            max_tokens: 256,
+            max_tokens: 128,
             temperature: 0.7,
             messages: [
                 {
