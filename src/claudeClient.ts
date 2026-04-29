@@ -56,7 +56,7 @@ export class ClaudeClient {
 
         Commit message:`;
 
-        const model = vscode.workspace.getConfiguration('claudeCommitMessage').get('model') || 'claude-3-5-sonnet-20241022';
+        const model = vscode.workspace.getConfiguration('claudeCommitMessage').get('model') || 'claude-sonnet-4-6';
 
         const response = await this.anthropic.messages.create({
             model: model as string,
