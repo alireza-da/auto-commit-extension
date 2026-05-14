@@ -1,0 +1,9 @@
+.vscode/**
+.claude/**
+src/**
+node_modules/**
+.gitignore
+.env
+CLAUDE.md
+tsconfig.json
+**/*.map
