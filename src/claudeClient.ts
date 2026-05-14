@@ -46,10 +46,12 @@ export class ClaudeClient {
     }
 
     private async generateMessageFromDiff(diff: string): Promise<string> {
+        const config = vscode.workspace.getConfiguration('claudeCommitMessage');
+        const customPrompt = config.get<string>('customPrompt') || 'Generate a commit message using conventional formats and follow previous commits formats';
+
         const prompt = `You are an expert programmer analyzing git diff output.
-        Generate a concise, clear commit message following conventional commit standards.
-        Focus on the why rather than the what, and group related changes logically.
-        Return only the commit message that will be sotred in git.
+        ${customPrompt}
+        Return only the commit message that will be stored in git.
 
         Diff:
         ${diff}

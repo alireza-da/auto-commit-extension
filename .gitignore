@@ -4,3 +4,4 @@
 /package-lock.json
 CLAUDE.md
 auto-commit-message-*.vsix
+.claude/settings.local.json
