@@ -29,15 +29,17 @@ export class ClaudeClient {
                 return;
             }
 
-            vscode.window.withProgress({
+            const message = await vscode.window.withProgress<string>({
                 location: vscode.ProgressLocation.Notification,
                 title: "Generating commit message with Claude...",
                 cancellable: false
-            }, async () => {
-                return this.generateMessageFromDiff(diff);
-            });
+            }, () => this.generateMessageFromDiff(diff));
 
-            const message = await this.generateMessageFromDiff(diff);
+            if (!message) {
+                vscode.window.showErrorMessage('Claude returned an empty commit message');
+                return;
+            }
+
             return message;
         } catch (error) {
             vscode.window.showErrorMessage(`Error generating commit message: ${error instanceof Error ? error.message : String(error)}`);
