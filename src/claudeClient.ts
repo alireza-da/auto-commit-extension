@@ -67,8 +67,9 @@ export class ClaudeClient {
             },
             body: JSON.stringify({
                 model,
-                max_tokens: 128,
+                max_tokens: 256,
                 temperature: 0.7,
+                reasoning: { enabled: false },
                 messages: [
                     {
                         role: 'user',
