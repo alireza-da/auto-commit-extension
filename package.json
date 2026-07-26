@@ -1,14 +1,32 @@
 {
     "name": "auto-commit-message",
     "displayName": "Auto Commit Message Generator",
-    "description": "Generate commit messages using AI based on your changes",
+    "description": "Generate clean, conventional git commit messages from your staged changes with one click, right in the Source Control panel. Free built-in tier, no API key required.",
     "version": "1.0.10",
     "publisher": "AlirezaDavoodi",
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#1e1e2e",
+        "theme": "dark"
+    },
     "engines": {
         "vscode": "^1.82.0"
     },
     "categories": [
+        "SCM Providers",
+        "Machine Learning",
         "Other"
+    ],
+    "keywords": [
+        "git",
+        "commit",
+        "commit message",
+        "ai",
+        "conventional commits",
+        "source control",
+        "scm",
+        "openrouter",
+        "claude"
     ],
     "activationEvents": [
         "onStartupFinished"
@@ -84,5 +102,9 @@
         "type": "git",
         "url": "https://github.com/alireza-da/auto-commit-extension.git"
     },
-    "icon": "images/icon.png"
+    "bugs": {
+        "url": "https://github.com/alireza-da/auto-commit-extension/issues"
+    },
+    "homepage": "https://github.com/alireza-da/auto-commit-extension#readme",
+    "license": "MIT"
 }
