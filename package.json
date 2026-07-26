@@ -2,7 +2,7 @@
     "name": "auto-commit-message",
     "displayName": "Auto Commit Message Generator",
     "description": "Generate clean, conventional git commit messages from your staged changes with one click, right in the Source Control panel. Free built-in tier, no API key required.",
-    "version": "1.0.10",
+    "version": "1.0.11",
     "publisher": "AlirezaDavoodi",
     "icon": "images/icon.png",
     "galleryBanner": {
